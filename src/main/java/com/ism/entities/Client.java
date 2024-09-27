@@ -1,7 +1,6 @@
 package com.ism.entities;
 
 import lombok.Data;
-
 import javax.persistence.*;
 
 @Data
@@ -17,4 +16,8 @@ public class Client {
 
     @Column(name = "prenom")
     private String prenom;
+
+    @OneToOne
+    @JoinColumn(name = "user_id")  // Spécifie la clé étrangère
+    private User user;
 }

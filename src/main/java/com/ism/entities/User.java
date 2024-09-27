@@ -2,7 +2,6 @@ package com.ism.entities;
 
 import com.ism.entities.enums.Role;
 import lombok.Data;
-
 import javax.persistence.*;
 
 @Data
@@ -10,8 +9,8 @@ import javax.persistence.*;
 @Table(name = "users")  // Nom de la table
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Auto-increment pour les identifiants
-    private Long id;  // Utilisez Long pour une meilleure compatibilité avec les bases de données
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String login;
     private String nom;
@@ -20,10 +19,9 @@ public class User {
 
     private boolean active;
 
-    @Enumerated(EnumType.STRING)  // Pour stocker le rôle sous forme de chaîne de caractères
+    @Enumerated(EnumType.STRING)
     private Role role;
 
-    // Navigation (optionnel)
-    @OneToOne(mappedBy = "user")  // Relation un-à-un
+    @OneToOne(mappedBy = "user")
     private Client client;
 }
