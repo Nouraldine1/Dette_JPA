@@ -1,5 +1,6 @@
 package com.ism;
 
+import com.ism.core.config.DatabaseConfig;
 import com.ism.entities.Client;
 import com.ism.entities.Dette;
 import com.ism.services.ClientServiceImpl;
@@ -8,13 +9,26 @@ import com.ism.services.DetteServiceImpl;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myPersistenceUnit");
+        // Charger la configuration de la base de données depuis config.yaml
+        DatabaseConfig dbConfig = DatabaseConfig.load();
+
+        // Créer un EntityManagerFactory avec des propriétés dynamiques
+        Map<String, String> properties = new HashMap<>();
+        properties.put("javax.persistence.jdbc.url", dbConfig.getUrl());
+        properties.put("javax.persistence.jdbc.user", dbConfig.getUser());
+        properties.put("javax.persistence.jdbc.password", dbConfig.getPassword());
+        properties.put("javax.persistence.jdbc.driver", dbConfig.getDriver());
+        properties.put("hibernate.dialect", dbConfig.getDialect());
+
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myPersistenceUnit", properties);
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         ClientServiceImpl clientService = new ClientServiceImpl(entityManager);

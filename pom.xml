@@ -7,6 +7,14 @@
     <groupId>com.ism</groupId>
     <artifactId>gestion_dette</artifactId>
     <version>1.0-SNAPSHOT</version>
+    
+       <!-- yaml -->
+    <dependency>
+    <groupId>org.yaml</groupId>
+    <artifactId>snakeyaml</artifactId>
+    <version>1.30</version> 
+    </dependency>
+
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -36,5 +44,17 @@
             <version>1.18.20</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.5.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>1.30</version> <!-- ou la dernière version -->
+        </dependency>
+
+
     </dependencies>
 </project>

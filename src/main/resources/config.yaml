@@ -1,0 +1,19 @@
+database:
+  # Configuration pour PostgreSQL
+  postgres:
+    url: jdbc:postgresql://localhost:5432/databasepost
+    username: postgres
+    password: passer
+    driver-class-name: org.postgresql.Driver
+    dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  # Configuration pour MySQL
+  mysql:
+    url: jdbc:mysql://localhost:3306/gestion_dette
+    username: root
+    password: ""
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    dialect: org.hibernate.dialect.MySQL8Dialect
+
+  # Type de base de données 
+  type: mysql  
